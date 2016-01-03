@@ -1,9 +1,25 @@
+import 'babel-polyfill';
 import express from 'express';
+import bluebird from 'bluebird';
 const server = express();
 
+function loadFile() {
+    return new Promise(function(resolve, reject) {
+        setTimeout(() => {
+            resolve('foo')
+        }, 1000);
+    });
+}
 
-server.get('/', (req, res) => {
-    debugger;
+
+server.get('/', async (req, res) => {
+    let content;
+    try {
+        content = await loadFile();
+    } catch (e) {
+      console.log(e);
+    }
+
     res.send('hello world 3');
 });
 
