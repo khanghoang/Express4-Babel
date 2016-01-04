@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp",
-    "test": "mocha test/ --compilers js:babel-register"
+    "test": "mocha test/ --compilers js:babel-register --recusive",
+    "test:watch": "npm test -- --watch"
   },
   "author": "",
   "license": "ISC",
